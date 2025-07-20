@@ -1,0 +1,48 @@
+E' possibile creare più macchine virtuali nello stesso Vagrantfile.
+Ad esempio, per creare le macchine web, database e gaming:
+  config.vm.define "web" do |web|
+    web.vm.hostname = 'web'
+    web.vm.box = "debian/buster64"
+
+    web.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "web"
+    end
+  end
+
+  config.vm.define "database" do |database|
+    database.vm.hostname = 'database'
+    database.vm.box = "debian/buster64"
+
+    database.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "database"
+    end
+  end
+
+  config.vm.define "gaming" do |gaming|
+    gaming.vm.hostname = 'gaming'
+    gaming.vm.box = "debian/buster64"
+
+    gaming.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "gaming"
+    end
+  end
+
+E' ovvio che sia le porte http, sia le porte ssh, sia l'IP di ogni
+macchina devono essere univoci:
+  web.vm.network "forwarded_port", guest: 80, host: 8080
+  web.vm.network "forwarded_port", guest: 22, host: 10122, id: "ssh"
+  web.vm.network "private_network", ip: "192.168.33.10"
+
+  database.vm.network "forwarded_port", guest: 80, host: 8081
+  database.vm.network "forwarded_port", guest: 22, host: 10123, id: "ssh"
+  database.vm.network "private_network", ip: "192.168.33.11"
+
+  gaming.vm.network "forwarded_port", guest: 80, host: 8082
+  gaming.vm.network "forwarded_port", guest: 22, host: 10124, id: "ssh"
+  gaming.vm.network "private_network", ip: "192.168.33.12"
+
+Ed anche il provisioning può essere specifico per ogni ambiente:
+  database.vm.provision :shell, path: "bootstrap.sh"

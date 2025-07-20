@@ -1,0 +1,22 @@
+# Eseguire uno script da linea di comando
+ mysql --host localhost --port 3306 --user root --password --table --verbose < 01\ -\ script.mysql
+
+# Visualizza i database
+SHOW DATABASES;
+
+# Visualizza il database in uso
+SELECT DATABASE();
+SELECT CONNECTION_ID();
+
+# Imposta la modalità di funzionamento di MySql, che indica la sintassi 
+# accettata e le validazioni da fare sugli insert dei dati.
+# Le piu importanti sono ANSI (piu aderente allo standard) 
+# e TRADITIONAL (genera errore invece che warning)
+SET @@SESSION.sql_mode='TRADITIONAL';
+
+# Visualizza eventuali warnings generati da operazioni di Insert
+SET @@SESSION.sql_warnings = 1;
+
+# Seleziona la modalita di inserimento e la visualizzazione dei warnings
+SELECT @@SESSION.sql_mode;
+SELECT @@SESSION.sql_warnings;

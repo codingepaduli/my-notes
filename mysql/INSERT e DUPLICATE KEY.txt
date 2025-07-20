@@ -1,0 +1,12 @@
+--L'inserimento di una riga in una tabella con il classico INSERT, quando non si puo' controllare se la kiave esiste o meno, puo' fallire se la chiave esiste.
+
+--Se quando la chiave esiste, si desidera modificare la riga associata, si usa:
+INSERT INTO photogallery(photogallery_id, title, description, creation_date, publication_date, imageURL, keywords)  
+VALUES ('12', 'gallery', 'description', '13-02-2012', '14-02-2012', '/img.jpg', '')  
+ON DUPLICATE KEY UPDATE 
+	title= '', description= '', 
+	creation_date= '', publication_date= '', 
+	imageURL= '', 
+	keywords= '';
+
+-- In questo caso, se non esiste la kiave, inserisce la riga, altrimenti effettua un update della riga che la la chiave selezionata.

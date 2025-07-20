@@ -1,0 +1,135 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  config.vm.define "web" do |web|
+    web.vm.hostname = 'web'
+    web.vm.box = "debian/buster64"
+    web.vm.box_url = "debian/buster64"
+
+    # Disable automatic box update checking.
+    # web.vm.box_check_update = false
+
+    web.vm.network "forwarded_port", guest: 80, host: 8080
+
+    # Fix random port "Fixed port collision for 22 => 2222. Now on port 2200."
+    web.vm.network "forwarded_port", guest: 22, host: 10122, id: "ssh"
+
+    web.vm.network "private_network", ip: "192.168.33.10"
+
+    # Create a public network, which generally matched to bridged network.
+    # web.vm.network "public_network"
+
+    # Share an additional folder to the guest VM.
+    # web.vm.synced_folder "../data", "/vagrant_data"
+
+    # Provider-specific configuration so you can fine-tune various
+    # backing providers for Vagrant. These expose provider-specific options.
+    web.vm.provider "virtualbox" do |vb|
+    #   # Display the VirtualBox GUI when booting the machine
+      vb.gui = false
+    #
+    #   # Customize the amount of memory on the VM:
+      vb.name = "web"
+      vb.memory = "1024"
+      vb.cpus = "2"
+    end
+
+    # Enable provisioning with a shell script.
+    web.vm.provision :shell, path: "bootstrap.sh"
+
+    # Enable provisioning with a shell script.
+    web.vm.provision :ansible_local, playbook: "bootstrap.yaml"
+  end
+
+  config.vm.define "database" do |database|
+    database.vm.hostname = 'database'
+    database.vm.box = "debian/buster64"
+    database.vm.box_url = "debian/buster64"
+
+    # Disable automatic box update checking.
+    # database.vm.box_check_update = false
+
+    database.vm.network "forwarded_port", guest: 80, host: 8081
+
+    # Fix random port "Fixed port collision for 22 => 2222. Now on port 2200."
+    database.vm.network "forwarded_port", guest: 22, host: 10123, id: "ssh"
+
+    database.vm.network "private_network", ip: "192.168.33.11"
+
+    # Create a public network, which generally matched to bridged network.
+    # database.vm.network "public_network"
+
+    # Share an additional folder to the guest VM.
+    # database.vm.synced_folder "../data", "/vagrant_data"
+
+    # Provider-specific configuration so you can fine-tune various
+    # backing providers for Vagrant. These expose provider-specific options.
+    database.vm.provider "virtualbox" do |vb|
+    #   # Display the VirtualBox GUI when booting the machine
+      vb.gui = false
+    #
+    #   # Customize the amount of memory on the VM:
+      vb.name = "database"
+      vb.memory = "1024"
+      vb.cpus = "2"
+     end
+
+    # Enable provisioning with a shell script.
+    database.vm.provision :shell, path: "bootstrap.sh"
+
+    # Enable provisioning with a shell script.
+    database.vm.provision :ansible_local, playbook: "bootstrap.yaml"
+  end
+
+  config.vm.define "gaming" do |gaming|
+    gaming.vm.hostname = 'gaming'
+    gaming.vm.box = "myaylaci/xubuntu1804-desktop"
+    gaming.vm.box_url = "myaylaci/xubuntu1804-desktop"
+
+    # Disable automatic box update checking.
+    # gaming.vm.box_check_update = false
+
+    gaming.vm.network "forwarded_port", guest: 80, host: 8082
+
+    # Fix random port "Fixed port collision for 22 => 2222. Now on port 2200."
+    gaming.vm.network "forwarded_port", guest: 22, host: 10124, id: "ssh"
+
+    gaming.vm.network "private_network", ip: "192.168.33.12"
+
+    # Create a public network, which generally matched to bridged network.
+    # gaming.vm.network "public_network"
+
+    # Share an additional folder to the guest VM.
+    # gaming.vm.synced_folder "../data", "/vagrant_data"
+
+    # Provider-specific configuration so you can fine-tune various
+    # backing providers for Vagrant. These expose provider-specific options.
+    gaming.vm.provider "virtualbox" do |vb|
+    #   # Display the VirtualBox GUI when booting the machine
+      vb.gui = true
+    #
+    #   # Customize the amount of memory on the VM:
+      vb.name = "gaming"
+      vb.memory = "1024"
+      vb.cpus = "2"
+     end
+
+    # Enable provisioning with a shell script.
+    gaming.vm.provision :shell, path: "bootstrap.sh"
+
+    # Enable provisioning with a shell script.
+    gaming.vm.provision :ansible_local, playbook: "bootstrap.yaml"
+
+    # Enable provisioning with a shell script.
+    gaming.vm.provision :shell, path: "gaming.sh"
+  end
+end

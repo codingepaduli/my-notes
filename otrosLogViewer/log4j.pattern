@@ -1,0 +1,6 @@
+type=log4j
+name=Lo4j-pattern
+description=Lo4j-pattern
+pattern=TIMESTAMP|PROP(SessionID)|THREAD|LOGGER|PROP(SERVER)|PROP(APP)|LEVEL|METHOD|MESSAGE
+dateFormat=yyyy-MM-dd HH:mm:ss.SSS
+charset=UTF-8

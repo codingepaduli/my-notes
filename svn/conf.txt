@@ -1,0 +1,9 @@
+Il file di configurazione si SVN si trova in windows in
+	C:\Users\e001970\AppData\Roaming\Subversion\config
+
+in questo file è possibile configurare i file da ignorare durante il commit:
+	global-ignores = *.csv, *.class
+il password store:
+	password-stores = gnome-keyring, windows-cryptoapi
+ecc..
+	

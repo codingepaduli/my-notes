@@ -1,0 +1,24 @@
+configurazione Tomcat 7:
+Tomcat di default non ha utenti, ne ruoli. Bisogna configurli. Anche la gui di tomcat richiede un utente con ruolo "manager-gui".
+
+il file \conf\tomcat-users.xml contiene i ruoli e gli utenti.
+I ruoli si aggiungono semplicemente con:
+	<tomcat-users>
+		<role rolename="manager-gui"/>
+		<role rolename="manager"/>
+		<role rolename="admin"/>
+		...
+	<tomcat-users>
+	
+Mentre gli utenti si aggiungono semplicemente con utente, pws e i ruoli da assumere:
+	<user username="admin" password="admin" roles="admin,manager,manager-gui"/>
+
+Per inserire un proxy, configurare il file <tomcat>/config/catalina.properties ed inserire le righe:
+	http.proxyHost=10.10.11.12
+	http.proxyPort=8080
+
+Bisogna configurare i connettori per deployare file di grandi dimensioni:
+Definizione di connettori, A "Connector" represents an endpoint (an interface) by which requests are received and responses are returned. Si configurano nel file \conf\server.xml.
+    <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" maxPostSize="0" />
+
+Per impostare il debug di applicazioni su Windows Seven, e' necessario cambiare la porta di debug, a causa di servizio di sistema che occupa quella di default (porta 8000). 

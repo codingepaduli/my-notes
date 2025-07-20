@@ -1,0 +1,15 @@
+Comandi svn:
+
+snv status: visualizza lo stato dei files
+svn log: visualizza il log delle ultime modifiche
+svn add filename: aggiunge il file al tracciamento modifiche (in locale)
+svn remove filename: rimuove il file dal tracciamento modifiche e lo cancella (in locale) 
+svn revert filename: ripristina il file
+svn revert -R filename: ripristina ricorsivamente i file nella directory
+
+
+Per creare una lista di file di cui tenere traccia e poi committare
+svn changelist mychangelist filename: aggiunge il file alla lista mychangelist
+svn changelist --remove index.html: rimuove il file dalla lista in cui e' presente
+svn commit -m"messaggio di log" --changelist mychangelist
+

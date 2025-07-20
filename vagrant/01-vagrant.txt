@@ -1,0 +1,65 @@
+Vagrant è un strumento open-source per la creazione e la gestione di ambiente virtualizzato attraverso un workflow, seguendo la metodologia DevOps; 
+Per workflow si intende l'automazione parziale o totale di un'attività. Nel caso di Vagrant, il workflow consiste nella creazione e gestione delle macchine virtuali che fanno parte dell'ambiente virtuale.
+
+Vagrant gestisce le macchine virtuali attraverso gli "hypervisor", detti anche providers. Quindi è necessario installarne uno per poter avviare le macchine virtuali. 
+Tra i più noti vi sono l'hypervisor di VirtualBox, l'hypervisor KVM presente nel kernel Linux e poi l'hypervisor Libvirt. 
+Per installare libvirt:
+    apt install vagrant-libvirt libvirt-daemon-system
+
+Vagrant crea le macchine virtuali partendo da dei "box", immagini di macchine virtuali già configurate per funzionare con uno specifico hypervisor. Esistono box per moltissimi sistemi operativi e possono essere scelti all'indirizzo https://vagrantcloud.com/search
+
+La gestione dei box avviene attraverso i seguenti comandi:
+    vagrant box list
+    vagrant box list outdated --global # elenca box da aggiornare
+    vagrant box add debian/buster64
+    vagrant box add debian/buster64 --provider=libvirt # indica il provider da utilizzare nella creazione della macchina virtuale
+    vagrant box remove debian/buster64 # rimuove il box
+    vagrant box update
+    vagrant box prune --name debian/buster64 # rimuove vecchie versioni del box
+    vagrant box prune --dry-run # Elenca versioni vecchie di tutti i box che potrebbero essere rimosse, ma non lo saranno (per via del flag --dry-run).
+
+Scelto e scaricato il box, è possibile gestire una macchina virtuale con i comandi seguenti:
+    vagrant global-status # visualizza tutte le macchine virtuali per l'utente, con nome e ID
+    vagrant init debian/buster64 # crea una macchina virtuale partendo dal box
+    vagrant up [name|id] # start-up the VM (login by VirtualBox by user "vagrant" and pwd "vagrant")
+    vagrant status [name|id]
+    vagrant suspend [name|id]
+    vagrant resume [name|id] # sveglia una macchina sospesa
+    vagrant halt [name|id] # shutdown
+    vagrant destroy [name|id] # destroy
+
+Nel caso di errori, abilitare da BIOS la virtualizzazione hardware
+VT-x is disabled in the BIOS for both all CPU modes (VERR_VMX_MSR_ALL_VMX_DISABLED)
+F2--> Settings --> Configuration --> Intel Virtual Technology: [ENABLED]
+
+Abilitare in VirtualBox le tecnologie di protezione
+AMD "No eXecute" (NX), Intel "eXecute Disable", ARM "eXecute Never"
+PAE (Physical Address Extension) che permette
+ai processori x86 e x86-64 di usare più di 4 gigabyte di memoria fisica
+nei sistemi a 32 bit, selezionare la macchina virtuale in VBox,
+"Settings" > System Settings > Processor > Enable the PAE/NX
+
+Creata la VM, viene creato il file Vagrantfile che descrive le caratteristiche e la configurazione della VM. Inoltre viene configurato l'accesso per ssh e viene sincronizzata la cartella contenente il Vagrantfile con la cartella /vagrant nella VM.
+
+Per verificare l'accesso, ci si può loggare nella VM via ssh (ed uscire con logout)
+    vagrant ssh
+    logout
+
+Il login nella VM da interfaccia grafica è sempre con user "vagrant" and pwd "vagrant".
+
+Per definire un nome per la macchina, bisogna definirla nella sezione di configurazione del file Vagrantfile
+    config.vm.hostname = "debianBusterVM"
+
+Nella sezione di configurazione dei parametri per lo specifico provider si possono definire le caratteristiche della macchina virtuale da creare:
+    vb.memory = "1024"
+    vb.cpus = "2"
+  
+Ogni provider può avere le proprie specificità, ad esempio VirtualBox impone che in questa sezione sia specificato il nome della macchina virtuale e se avviare tale VM attraverso l'interfaccia grafica, impostando quindi i seguenti parametri:
+    vb.name = "debianBusterVM"
+    vb.gui = true
+
+Nota: VirtualBox usa il proprio gestore di macchine virtuali, chiamato VBoxManage; 
+Nel caso di errore "VirtualBox machine with the name 'exe1DebianBuster' already exists. Please use another name or delete the machine with the existing name, and try again" allora bisogna gestire le macchina virtuale attraverso il gestore di VirtualBox, attraverso i seguenti comandi:
+    VBoxManage list vms
+    VBoxManage controlvm ID pause|resume|reset|poweroff|savestate
+    VBoxManage unregistervm ID

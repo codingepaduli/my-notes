@@ -1,0 +1,2 @@
+Per incrementare la memoria PermGem utilizzata da ant, aggiornare la variebile d'ambiente:
+set ANT_OPTS=-XX:MaxPermSize=600m

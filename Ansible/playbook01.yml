@@ -1,0 +1,16 @@
+---
+- name: "playbook01"
+  hosts: 
+    - localhost
+    - 127.0.0.1
+  tasks:
+    - name: "debugging information"
+      debug:
+        msg: "Accessing via SSH to host {{ ansible_ssh_host }} by user {{ ansible_ssh_user }}"
+    - name: "ansible works information"
+      ping:
+        data: "This module always returns 'pong' on successful contact to host {{ ansible_ssh_host }}"
+    - name: "Waiting 5 seconds"
+      pause:
+        prompt: "Wait 5 seconds"
+        seconds: 5

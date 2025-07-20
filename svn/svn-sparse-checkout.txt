@@ -1,0 +1,30 @@
+Svn 1.6 introduce lo sparse checkout, cioe' la possibilita' di effettuare il checkout di un repository, ma non completamente
+
+Data l'operazione di checkout di un repository in una cartella locale:
+	svn checkout https://subversion.assembla.com/svn/javing/appunti/Appunti_Tools/Linux/myPc/apache www 
+e' possibile aggiungere una delle seguenti opzioni:	
+	--depth empty 		: checkout della sola directory (escludendo files e sotto-directory interne)
+	--depth files 		: checkout della sola directory e dei files contenuti (escludendo le sotto-directory interne)
+	--depth immediates 	: checkout di un solo livello (directory, files e sotto-directory di primo livello)
+	--depth infinity  	: checkout di tutti i livelli (completo)
+	
+Notare che l'operazione di checkout crea nella directory il file .svn (che ricorda queste informazioni).
+Effettuando infatti un "svn update" sulla directory principale, saranno utilizzate proprio le indicazioni fornite con il parametro "--depth".
+
+Se per l'update si vuole modificare le indicazioni di "scaricamento", si possono utilizzare le stesse opzioni indicando le directory sulle quali applicarle:
+	svn update --set-depth infinity sites-available/ sites-available2/
+	svn update --set-depth empty sites-available/ sites-available2/
+	svn update --set-depth immediates sites-available/ sites-available2/
+	svn update --set-depth files sites-available/ sites-available2/
+
+Nota: dato che non e' possibile fare il checkout di un singolo file, ma solo di una directory, come workaround si puo' fare il checkout (ad esempio nella cartella corrente ".") della sola cartella interessata (--depth empty) e poi aggiornare il singolo file:
+	svn checkout https://subversion.assembla.com/svn/javing/appunti/Appunti_Tools/Linux/myPc/users/ . --depth empty
+	svn update .bash_aliases
+
+Nota2: bisogna evitare di "ridurre" il livello di depth, dato che i file che non rispettano la profondita' indicata vengono cancellati.
+Ad esempio, su una cartella "svn" su cui e' impostato il depth "infinity",
+	con sotto-cartella "dir1" 
+		con le sotto-sotto-cartelle "dir1-1", "dir1-2"
+se si effettua un update modificando il depth:
+	svn update svn --set-depth immediates
+allora la cartella "dir1" verra mantenuta, ma tutte le sottodirectory "dir1-1", "dir1-2" verranno cancellate (non rispettando la profondita').

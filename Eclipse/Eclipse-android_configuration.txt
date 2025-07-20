@@ -1,0 +1,10 @@
+Eclipse e Android 
+	Scaricare Eclipse
+	Scaricare SDK Android da https://developer.android.com/sdk/index.html
+	Lanciare l'SDK manager, inserire il proxy.
+	Installare i platform tools e l'ultima api. Su Winzozz anche i driver USB.
+	Da eclipse installare il plugin
+	Lanciare da Eclipse il Device Manager e creare un device.
+
+In caso di proxy, per abilitare la connessione dall'emulatore, in Run Configuration, scheda target, inserire i command line arguments (vedi screenshot android_emulator_set_network):
+	-http-proxy http://10.10.11.12:8080/

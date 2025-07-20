@@ -1,0 +1,40 @@
+Disable the automatic build:
+	Window -> Preference -> General -> Workspace -> Build -> disable the entry "build automatically".
+
+Set the default file encoding to UTF-8:
+	Window -> Preference -> General -> Workspace -> set the entry Text File encoding to Utf8
+
+Configurare JavaDoc:
+	Window -> Preference -> Menu Java -> Code Style -> Code Template
+		Overriding methods -> /** {@inheritDoc} */
+		Files ->  /** ${type_name} */
+		Types  -> /** ${tags} */
+		Getter and Setter  -> /** Gets/Sets the ${bare_field_name}. */
+	Window -> Preference -> Menu Java -> Compiler ->Javadoc
+		Malformed javadoc Comment -> Warning / Private / Validate ALL
+		Missing javadoc tags -> Warning / Private / Ignore none
+		Missing javadoc comments -> Warning / Private / Ignore none
+		
+Per avere il debug con applicazioni che girano su jBoss o Tomcat:
+	Run -> Debug Configurations
+	Creare un nuovo Remote Java Application
+	Inserire un nome a scelta
+	Selezionare il progetto che si vuole debuggare
+	Selezionare come Connection Type: Standard (Socket Attach)
+	Inserire come Host: localhost
+	Inserire la porta di debug
+	Selezionare Apply e poi Debug
+
+In eclipse.ini file, 
+	increase the memory allocated to the JVM replacing the option
+		-Xmx256m with -Xmx1024m 
+	and allow array sintax adding, at the end of the file, the option
+		-Dsun.lang.ClassLoader.allowArraySyntax=true
+	
+E' sconsigliato configurare il proxy, poiche eclipse tenta di scaricare sorgenti e javadoc dei progetti maven.
+
+Configure ANT:
+	Set the ANT home, by Windows->Preferences->Ant->Runtime->Ant Home
+	You can increase the Memory used by ANT project by menu: Run->External Tools->External Tools Configuration.
+	In the left tab you have to select the ANT build.xml file.
+	The JRE tab contains the command line arguments for JVM: add -Xmx200m -XX:MaxPermSize=600m

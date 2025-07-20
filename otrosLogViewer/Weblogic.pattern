@@ -1,0 +1,6 @@
+type=log4j
+name=Weblogic-pattern
+description=NLG Weblogic-pattern
+pattern=<TIMESTAMP> <LEVEL> <LOGGER> MESSAGE
+dateFormat=MMM dd, yyyy hh:mm:ss a zzzz
+charset=UTF-8

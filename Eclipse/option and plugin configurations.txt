@@ -1,0 +1,51 @@
+jAutoDoc : http://jautodoc.sourceforge.net/ : Plugin to generate automatically javadoc to java files.
+	Window -> Preferences -> Java -> JAutodoc
+		Add TODO for auto-generated -> Disabled
+		Use package-info.java
+
+EditorConfig:
+	editorconfig-eclipse plugin helps developers define and maintain consistent coding styles between different editors and IDEs. 
+		
+Subclipse: SVN client for eclipse:
+	Go to Help -> Eclipse Marketplace, find Subclipse and install it. 
+	Configure the pure-java client svnKit , or the JNI client javaHL (it requires to install the libsvn-java in linux).
+
+http://code.google.com/a/eclipselabs.org/p/changelog/ permette di risalire a tutti i commit che un utente ha effettuato in un intervallo di tempo.
+
+Maven - Update Archetype Catalog:
+    Go to Windows -> Preferences -> Maven -> Archetypes
+    Click on Add Remote Catalog button -> Add the catalog "http://repo1.maven.org/maven2/archetype-catalog.xml”
+
+FindBugs: code analyzer for Java:
+	Go to Help -> Install new software -> Add the url http://findbugs.cs.umd.edu/eclipse/
+	Set experimental from windows preferences. Select a java source, right click, Find bugs.
+
+WindowBuilder: a powerful and easy to use bi-directional Java GUI designer
+
+Eclipse ResourceBundle Editor Plugin : manage key/value information for all related properties files through one screen. Non-ASCII character conversion to/from Unicode.
+
+The old WTP (Web Tool Platform) should not be used (and has to be removed). WTP releases have been incorporated into the eclipse release.
+Use Web, XML, Java EE and OSGi tools instead.
+
+BUG (on solidX distribution)
+Unable to find jni library path in debian, so add this line to the eclipse.ini:
+-Djava.library.path=/usr/lib/i386-linux-gnu/jni/
+
+BUG (proxy connection): 
+Eclipse internet connection doesn't work with proxy if SOCKS proxy is enabled.
+Go to windows -> Preferences -> Network Connection Settings 
+ -> Select Active Provider to "Manual" ->
+ -> Set HTTP/HTTPS proxy 
+ -> Clear SOCKS proxy (by "Clear" button) if this is set.
+ 
+JD-Eclipse : Eclipse plugin for Java Decompiler project (library JD-Core)
+	Go to Help -> Eclipse Marketplace, find JD-Eclipse and install it.
+
+Realignment : a plugin for the correct alignment of decompiled class with the debugger
+	GO to http://sourceforge.net/projects/realignmentjd/files/?source=navbar 
+	Download the jar, and move it in the eclipse/plugin directory
+	Configure the decompiler in Windows -> Preference -> Java -> Decompiler and set:
+		Default Class Decompiler : JD-Core
+		Output original file numbers as comment : TRUE
+		Align code for debugging : TRUE
+		Set class decompiler Viewer as the default Java Class File content type editor

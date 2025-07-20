@@ -1,0 +1,71 @@
+Ansible is simple open source IT engine which automates operations.
+
+Ansible works by connecting your nodes (your machines in LAN or internet) through ssh (by default).
+After connecting to your nodes, Ansible pushes small programs called as “Ansible Modules”, runs that modules and removes them when finished.
+
+A file /etc/ansible/hosts is used to list all the nodes Ansible needs to connect. You can group nodes. 
+
+Esample of /etc/ansible/hosts file:
+# File name: /etc/ansible/hosts
+[group1]
+localhost ansible_user=Me ansible_connection=local
+[group2]
+1.2.3.4 ansible_user=Me ansible_connection=ssh
+
+A playbook is written in YAML (https://en.wikipedia.org/wiki/YAML).
+The first line is "---"
+
+The painful errors about YAML are:
+* Strings have to be sorrounded by double quotes, for example "this is a string".
+* List elements starts with "-".
+* Each item property must be placed exactly below the item (with the same spaces number).
+
+Example:
+---
+- name: "playbook01"
+  hosts: 
+    - "localhost"
+
+If you write "hosts" with more or less spaces (" "), the syntax is wrong, for example:
+- name: "playbook01"
+    hosts:
+    ^ The offending line appears here, wrong syntax 
+
+To run a playbook, use the command:
+ansible-playbook playbook.yml
+
+To check the playbook syntax, use the command
+ansible-playbook playbook.yml --syntax-check
+
+To specify the file containing all the hosts, use:
+ansible-playbook playbook.yml -i ansibleHosts.ini
+
+When you run a playbook, Ansible notify you that something has changed with the 
+property changed: true and the yellow output, and notify you nothing has changed
+with the property changed: false and the green output.
+
+
+You can add variables in the top of a playbook, for example:
+---
+http_port: 80
+
+You can add variables for each host, for example:
+---
+- hosts: "localhost"
+  vars: 
+      backup_folder: "~/backup/"
+
+
+When connected to a host, you can 'become' a privileged user (like root) setting:
+become: "true"
+become_user: "apache"
+become_method: "su"
+
+but the user "apache" needs rights to start a shell as root, so test it as ssh apache@host and, after, try apt-get update. If you have the error:
+    Can't open the file /var/lib/apt/lists/lock - open (13: Access denied)
+you don't have the rights. 
+
+Retry ssh apache@host and try "su" and apt-get update. If you become root, you can 'become' the user apache.
+
+In order to start the playbook and ask for a password:
+ansible-playbook playbook.yml --ask-become-pass

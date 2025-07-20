@@ -1,0 +1,10 @@
+https://en.wikipedia.org/wiki/Java_virtual_machine
+
+The Java virtual machine heap is the area of memory used by the JVM, specifically HotSpot, for dynamic memory allocation.[11] The heap is divided into generations:
+
+    The young generation stores short-lived objects that are created and immediately garbage collected.
+    Objects that persist longer are moved to the old generation (also called the tenured generation).
+
+The permanent generation (or permgen) is used for class definitions and associated metadata. Permanent generation is not part of the heap.[12][13]
+
+Originally there was no permanent generation, and objects and classes were stored together in the same area. But as class unloading occurs much more rarely than objects are collected, moving class structures to a specific area allows significant performance improvements.[12]

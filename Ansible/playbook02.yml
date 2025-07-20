@@ -1,0 +1,15 @@
+---
+- name: "playbook02"
+  become: "true"
+  become_user: "root"
+  become_method: "su"
+  hosts: "localhost"
+  tasks:
+      - name: "Update packages on linux using the ansible module called apt"
+        apt:
+            state: "latest"
+            autoclean: "yes"
+            autoremove: "yes"
+            update_cache: "yes"
+
+        

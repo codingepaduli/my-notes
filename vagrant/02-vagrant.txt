@@ -1,0 +1,31 @@
+Nella sezione config.vm.network del Vagrantfile, è possibile condividere
+delle porte della VM con il proprio computer:
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+
+E' possibile configurare anche la porta per ssh:
+  # Fix random port "Fixed port collision for 22 => 2222. Now on port 2200."
+  config.vm.network "forwarded_port", guest: 22, host: 10122, id: "ssh"
+
+Ed è possibile configurare l'ip della VM in una ipotetica rete privata:
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+Nella sezione config.vm.provision del Vagrantfile, è possibile impostare il
+provisioning, ovvero dei file da eseguire quando si effettua "vagrant init"
+oppure "vagrant provision".
+Questi file sono una sorta di ricetta per configurare la VM.
+E' possibile eseguire il provisioning da shell, ma anche da Ansible o Docker.
+
+Esempio di impostazione del file bootstrap.sh, da eseguire tramite shell
+  config.vm.provision :shell, path: "bootstrap.sh"
+con contenuto file bootstrap.sh:
+  #!/bin/bash
+  echo "provisioning by shell"
+
+Esempio di impostazione del playbook bootstrap.yaml, da eseguire
+tramite ansible_local, che installa ansible sulla VM e lo esegue
+  config.vm.provision :ansible_local, playbook: "bootstrap.yaml"
+con contenuto playbook per effettuare il ping:
+  ---
+  - hosts: all
+    tasks:
+    - ping:

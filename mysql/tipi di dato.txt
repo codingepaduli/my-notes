@@ -1,0 +1,61 @@
+﻿TIPI DI DATO MYSQL 5.5 
+(dalla documentazione ufficiale SUN).
+In MySQL, tutti i tipi di colonne possono contenere (se dichiarato nella loro definizione) il valore NULL, previsto dallo standard SQL per indicare un “non valore”.
+Dati Numerici
+ 1 BIT      [(M)]						m bit
+ 2 TINYINT  [(M)]     	[UNSIGNED] [ZEROFILL]	1 byte
+ 3 SMALLINT [(M)]     	[UNSIGNED] [ZEROFILL]	2 byte
+ 4 MEDIUMINT[(M)]     	[UNSIGNED] [ZEROFILL]	3 byte
+ 5 INT      [(M)]     	[UNSIGNED] [ZEROFILL]	4 byte
+ 6 BIGINT   [(M)]     	[UNSIGNED] [ZEROFILL]	8 byte
+ 7 FLOAT    [(M,D)]   	[UNSIGNED] [ZEROFILL]	4 byte
+ 8 DOUBLE   [(M,D)]   	[UNSIGNED] [ZEROFILL]	8 byte
+ 9 NUMERIC  [(M)]	    	[UNSIGNED] [ZEROFILL]	65 digit
+ 9 DECIMAL  [(M,D])] 	[UNSIGNED] [ZEROFILL]	65 digit * 
+L’opzione UNSIGNED non e' standard e specifica che il numero è senza segno. 
+L’opzione ZEROFILL indica al server di memorizzare i numeri con degli zeri davanti nel caso in cui la lunghezza sia inferiore a quella massima prevista. L'attributo ZEROFILL non e standard e può causare problemi con Join e altri operatori.
+La specifica di precisione per i tipi interi (M) non e' standard.
+I tipi TINYINT, SMALLINT E BIGINT non sono standard.
+I tipi FLOAT e DOUBLE rappresentano numeri APPROSSIMATI con virgola. MySQL effettua arrotondamenti quando memorizza un valore in virgola mobile, cosi se tu inserisci 999.00009 in un campo FLOAT(7,4), il risultato approssimativo sarà 999.0001. Attento quindi nei confronti a trattarli come fossero esatti, potresti avere problemi.
+I tipi NUMERIC E DECIMAL rappresentano i numeri “esatti”, con M cifre totali di cui D decimali. Sono usati quando e' importante preservare la precisione del valore. Lo standard SQL esige che con NUMERIC, si riesca a memorizzare qualsiasi valore con m cifre complessive [e con DECIMAL si aggiunge il vincolo che di m cifre, n sono dopo la virgola]. Quindi si può affermare che con DECIMAL(5,2) si riesce a memorizzare qualsiasi valore di 5 cifre totali e 2 dopo la virgola, cosi questo campo può memorizzare precisamente qualsiasi numero tra -999.99 e 999.99.  L'intervallo attuale per un dato DECIMAL può essere ridotto a meno di 65 cifre a causa della precisione richiesta.
+Date e Tempo
+1 DATE		 da '1000-01-01' 			a '9999-12-31'. 
+2 DATETIME		 da '1000-01-01 00:00:00' 	a '9999-12-31 23:59:59'.  
+3 TIMESTAMP		 da '1970-01-01 00:00:01'	a '2038-01-19 03:14:07' UTC
+4 TIME		 da '00:00:00' 			a '23:59:59'. 
+5 YEAR   [(2|4)]	 da '1901' a '2155', o da 0 a 99.
+			 
+Values in the ranges '00' to '69' and '70' to '99' are converted to YEAR values in the ranges 2000 to 2069 and 1970 to 1999. 
+
+MySQL non accetta valori TIMESTAMP  che includono zero nel giorno o nel mese o valori che non sono date valide. La sola eccezione alla regola e'  il valore speciale '0000-00-00 00:00:00'. 
+
+TIME, DATE e DATETIME accettano o meno valori illegali nei campi, ad esempio '2009-00-00' a seconda della modalita con cui gira il server NO_ZERO_DATE, NO_ZERO_IN_DATE, ALLOW_INVALID_DATES.
+Valori “Zero” per DATE, TIME o DATETIME usati da MyODBC sono converititi a NULL.
+Stringhe
+ 1 CHAR(M)		0 - 255 car
+ 2 VARCHAR(M)	0 – 65,535 car
+ 
+ 3 BINARY(M)	0 - 255 bytes
+ 4 VARBINARY(M)	0 – 65,535 bytes
+
+Il tipo CHAR è una stringa di lunghezza fissa di M caratteri, con M da 0 a 255 caratteri.Il tipo CHAR BYTE equivale a CHAR BINARY. Il tipo VARCHAR è una stringa di lunghezza variabile.
+I tipi BINARY e VARBINARY corrispondono a CHAR e VARCHAR, ma memorizzano stringhe di byte invece che di caratteri. 
+Testi lunghi
+  TINYBLOB		  TINYTEXT		255 bytes o caratteri
+  BLOB		  TEXT		65535 bytes o caratteri 
+  MEDIUMBLOB	  MEDIUMTEXT	16.777.215 bytes o caratteri
+  LONGBLOB		  LONGTEXT		4 gigabyte
+
+
+I blob sono testi lunghi quanto si desidera, e sono memorizzati come flussi di byte,
+I text sono testi lunghi quanto si desidera, e sono memorizzati come flussi di caratteri,
+
+Enumerazioni e Insiemi
+  ENUM         ('valore1','valore2',...)
+
+Una tipo ENUM può contenere uno e solo uno dei valori elencati nella definizione, oppure NULL o una stringa vuota. Ogni valore e' numerato nelle enumerazioni. The index value of the empty string error value is 0. This means that you can use the following SELECT statement to find rows into which invalid ENUM values were assigned: 
+SELECT * FROM tbl_name WHERE enum_col=0;
+The index of the NULL value is NULL. 
+Se la modalita' “strict SQL” e' abilitata l'inserimento di valori errati genera errore.
+  SET          ('valore1','valore2',...)
+Un tipo SET, come la ENUM, prevede un insieme di valori possibili (fino a 64).

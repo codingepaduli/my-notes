@@ -1,0 +1,27 @@
+---
+- name: "Restore Dot Files"
+  hosts: "localhost"
+  vars: 
+      backup_folder: "~/Sviluppo/SVN/javing_svn_repository/appunti/Appunti_Tools/Linux/myPc/users/"
+
+  tasks:
+    - name: "log connection"
+      debug:
+        msg: "Accessing via SSH to host {{ ansible_ssh_host }} by user {{ ansible_ssh_user }}"
+    - name: "Determine if a path exists and is a directory.  Note that we need to test
+            both that p.stat.isdir actually exists, and also that it's set to true."            
+      stat:
+        path: "{{backup_folder}}"
+      register: backupDirInfo
+    - debug:
+        msg: "Path {{ backup_folder }} exists and is a directory"
+      when: backupDirInfo.stat.isdir is defined and backupDirInfo.stat.isdir
+    - name: "Copy files from backup directory to proper directory"
+      copy:
+        src: "{{ backup_folder }}/.bash_aliases"
+        dest: "~/.bash_aliases"
+        owner: "io"
+        group: "io"
+        mode: '0644'
+      when: backupDirInfo.stat.isdir is defined and backupDirInfo.stat.isdir
+      

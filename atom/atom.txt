@@ -1,0 +1,15 @@
+Atom ha molti plugin, i raccomandati sono:
+
+atom-beautify: riorganizza e rende leggibile il codice (per alcuni linguaggi richiede un tool specifico, ad esempio per Java e c# e' richiesto "Uncrustify").
+atom-css-comb: riorganizza e ordina i CSS.
+build: abilita la compilazione ed il packaging da Atom
+editorconfig: configurazione comune degli editor
+highlight-selected: Evidenzia una parola selezionata.
+language-Hugo: Supporto per i file markdown+yml per Hugo.
+linter: gestisce la validazione su diversi linguaggi mediante plugin (lungo da configurare)
+  linter-htmlhint per HTML (usa htmlhint da npm);
+  linter-csslint per CSS (usa csslint da npm);
+  linter-jshint per JS;
+  linter-java per Java;
+  linter-markdown per markdown;
+todo-show: mappa le correzioni o le azioni mediante parole chiave TODO, FIXME e CHANGED.
