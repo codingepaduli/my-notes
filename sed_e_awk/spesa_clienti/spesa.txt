@@ -1,0 +1,4 @@
+Cliente1 2 500
+Cliente2 3 500
+Cliente3 0 0
+Cliente4 4 500
