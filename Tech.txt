@@ -1,0 +1,109 @@
+ACID : Atomic Consistent Isolated Durable transaction, ovvero transazione atomica (intesa come unità di esecuzione indivisibile) consistente (cioè che non violi i vincoli della base di dati), isolata (indipendente dall'esecuzione di altre transazioni) e consistente (ovvero l'effetto della transazione sia fissato su disco).
+
+ASR : Algorithmix Sound Rescue : Restauro digitale dei brani.
+
+ATA : ATA/ATAPI : Advanced Technology Attachment with Packet Interface: collegamento in parallelo. Lo spazio  di indirizzamento LBA (Large Bios Address - standard 2004) per le periferiche ATA puo essere di 28-bit precedente all'ATA6) limitando la partizione a 128 GB, oppure 48-bit (ATA-6 o superiore) limitando la partizione a 128 Petabyte (1000 terabyte).
+
+Binding : In un naming service è l'operazione che restituisce il nome di un oggetto.
+
+BTX : Successore della scheda ATX, progettata per risolvere problemi di riscaldamento del processore e riduzione del rumore, riduce anche il percorso delle piste sul circuito.
+
+Cloud computing: l'unione di virtualizzazione (un pc utilizzato come fossero piu pc), elaborazione parallela (elaborazione a griglia, distribuita su rete, ...) e Software As A Service, ovvero software fornito come servizio (quindi 'ospitato' su un server) il cui utilizzo avviene tramite un browser.
+
+CRM : Gestione delle Relazioni coi Clienti (Vedi anche ERP). 
+	1 Il CRM si spinge sostanzialmente secondo quattro direzioni differenti e separate:
+	   1. L'acquisizione di nuovi clienti (o "clienti potenziali")
+	   2. L'aumento delle relazioni con i clienti più importanti (o "clienti coltivabili")
+	   3. La fidelizzazione più longeva possibile dei clienti che hanno maggiori rapporti con l'impresa (definiti "clienti primo piano")
+	   4. La trasformazioni degli attuali clienti in procuratori, ossia consumatori che lodano l’azienda incoraggiando altre persone a rivolgersi alla stessa per i loro acquisti
+	2 Il CRM si articola comunemente in 3 tipologie:
+	   1. CRM operativo: soluzioni metodologiche e tecnologiche per automatizzare i processi di business che prevedono il contatto diretto con il cliente.
+	   2. CRM analitico: procedure e strumenti per migliorare la conoscenza del cliente attraverso l'estrazione di dati dal CRM operativo, la loro analisi e lo studio revisionale sui comportamenti dei clienti stessi.
+	   3. CRM collaborativo: metodologie e tecnologie integrate con gli strumenti di comunicazione (telefono, fax, e-mail, ecc.) per gestire il contatto con il cliente.
+
+Continuous Integration : pratica adottata quando si ha necessità di integrare frequentemente il lavoro di piu membri di un progetto. Consiste nell'esecuzione automatica di processi di build e testing ad ogni operazione di integrazione, al fine di individuare i possibili errori il prima possibile. Inoltre, consente di sapere esattamente a che punto ci si trova nel ciclo di sviluppo, quali test falliscono e cosa funziona.
+
+CVS : Concurrent Versions System : Sistema di controllo delle versioni : Software che permette a piu utenti di lavorare in contemporanea sullo stesso progetto/documento. CVS rigido: se un utente lavora su un file, questo file non sara disponibile ad altri utenti. CVS flessibile: più utenti lavorano sullo stesso file, ma quando eseguono la scrittura finale il CVS creerà un file delle differenze. Tutte queste differenze potranno essere aggiunte in automatico, ma occorre comunque la visione finale dell'utente. Inoltre permette di creare vari rami del progetto/documento e di salvare/modificare le varie versioni, agendo come un database.
+
+Dalvik: la VM per eseguire bytecode compilato per Android.
+
+Daneel: un interprete Java per il bytecode compilato per android (Dalvik, la VM di Android).
+
+DDR2 : RAM Double Data Rate 2generation - Lavorano a voltaggio inferiore, permettono frequenze più elevate ed hanno + pin risp le DDR normali.
+DDR2-400 : DDR2 400 Mhz 3.2 GB/s.
+DDR2-533 : DDR2 533 Mhz 4.3 GB/s.
+
+DDR3 : RAM Double Data Rate 3generation 1.6 Gbit/s.
+
+Dyrectory System : un insieme di naming System, ma gli oggetti sono descritti da alcuni attributi che descrivono l'entità. Sono possibili quindi operazioni sugli attributi (selezione oggetti con attributo x = "C").
+
+EDGE : Enhanced Data rates for Global Evolution : Aumento della velocita dati a 200 kbit/s, evoluzione del GPRS.
+
+EJB, un modello a componenti ServerSide che implementano e nascondono le funzionalità "ortogonali" al progetto quali Pooling, LifeCyle, Client Session Menagement, Transaction Menagement, Authentication e Access Control, Persistence. I tre tipi proncipali di Container EJB sono i Session Beans, gli Entity Beans e ne i Message Driven Bean (Vedi Dev n 100).
+
+Envisioning: Fase preliminare di analisi per "accettare" e "stimare" un progetto. Si deve tener conto delle risorse a disposizione, dell'eventuale training, dei requisiti da sviluppare e del tempo da rispettare.
+
+Erasure: java compiler use a process called "erasure" or "type erasure" to ensure the generics code is compatible with legacy code. At compile time, all generics type parameter are removed and replaced by the corrispondent specific java type, and casts. If no specific java type was defined, Object is used.
+
+Extreme UltraViolet Lithografy : Processo Litografico a raggi UltraVioletti Estremizzato : Saranno usati specchi e molecole di gas xenon per estremizzare il processo Litografico a raggi UltraVioletti, riducendo la lunghezza d'onda dei robot di 10 volte, creando circuiti molto piu piccoli.
+
+Hot Plug : Tecnologia per il collegamento a caldo delle unità.
+
+HTC IntelliSample : tecnologia grafica di gestione intelligente dei dati nella banda passante (delle pipeline di rendeering per l'elaborazione dei pixel) ed un controllo ottimale delle funzioni di anti-aliasing.
+
+Hyper Transport : Bus creato da AMD. Risolve problematiche molto + ampie della connessione tra periferiche ("limitazione" del bus PCI e PCI Express), come la possibilità di avere 2 processori sullo stesso sistema, dei quali solo uno collegato alla memoria.
+
+JNDI : Java Naming e Directory Interface : Interfaccia che rende possibile il servizio di naming in Java.
+
+LCD - Led : schermi LCD con retroilluminazione a led che amplia del 45% lo spettro dei colori rispetto ad un normale LCD con retroilluminazioe fluorescente. Si hanno colori più profondi e accurati.
+
+Lookup : In un naming service è l'operazione che restituisce l'oggetto identificato dal nome (risoluzione del nome).
+
+Matrix Storage : Tecnologia che, utilizzando 2 dichi di uguale capacità, permette di utilizzare il RAID sia in striping che in mirroring (i 2 dischi si dividono il compito di scrivere e leggere i dati e (allo stesso tempo) usano la metà della capacità totale per creare un immagine di backup dei dati, aggiornata in tempo reale)
+
+Multiple Instruction Multiple Data (MIMD) : architettura parallela in cui diverse unità effettuano diverse elaborazioni su dati diversi. E' necessaria la comunicazione tra i vari processori.  
+
+Naming service : Un servizio che associa a ciascuna entità un nome leggibile che rispetti certe convenzioni (Naming Conventions). Un esempio è il DNS che associa un nome server.gruppocasa.com alla macchina server del gruppo gruppocasa del dominio com. Le operazioni tipiche sono lookup e binding.
+
+Naming System : un insieme di contesti di naming service che permette anche delle operazioni comuni.
+
+Dyrectory System : un insieme di naming System, ma gli oggetti sono descritti da alcuni attributi che descrivono l'entità. Sono possibili quindi operazioni sugli attributi (selezione oggetti con attributo x = "C").
+
+Native Command Queuing : Tecnologia integrata sui dischi SATA. Riduce i tempi di caricamento e migliora le prestazioni del sistema nell'uso simultaneo di più applicazioni.
+
+OLED : Organic LED : Tecnologia, gia usata in cellulari e palmeri, che impiega materiali naturalmente luminescenti per creare LCD + brillanti e che richiedano meno energia.
+
+PCI Express : (Intel ) Versione seriale del vecchio Bus PCI. Raggiunge velocita (teoriche) di trasferimento di 80 GByte (il vecchio PCI raggiungeva i 2 Gbyte)
+PCI Express X1 : 500 MB/s Ogni dispositivo ha la propria connessione dedicata (non condivide il bus come col vecchio PCI)
+PCI Express X16 : Sostituira le connessioni AGP (AGP 8X = 2 GB/s). Ha 2 canali separati per lettura e scrittura da e verso il frame buffer (memoria video), ognuno di 4 GB/s (totale di 8 GB/s). Inoltre ha una velocita di lettura 15 volte superiore l'AGP (l'AGP è estremamente efficiente nell'invio dati, ma molto lenta nella lettura (per tutta una serie di limitazioni tecniche)
+
+PictBride : Protocollo di comunicazione che permette di controllare la stampante direttamente dalla fotocamera.
+
+RAID : Redundant Array of Inexpensive Disk : Insieme ridondante (array) di dischi. Tecnologia che evita la perdita dei dati (causa guasti al disco) e sfrutta il parallelismo dei dischi (quindi + operazioni di lettura/scrittura sono svolte contemporaneamente. Il S.O. vede i vari dischi come un unico disco virtuale. I diversi livelli di RAID sono:
+RAID 0 (striping)(sezionare) : Spalma gli accessi al disco virtuale sui dischi fisici aumentando le prestazioni in lettura/scrittura (ogni disco legge uno specifico blocco in parallelo con gli altri). Non consente il recupero dei dati dopo un guasto.
+RAID 1 (mirroring) : Ciascun disco dell'array ha una copia esatta su un altro disco. Incrementa le prestazioni in lettura (vengono distribuite su tutti i dischi), e scrittura (ciascun dato deve essere copiato anche sul disco "clone", quindi si sfruttano solo la metà dei dischi). In caso di guasti i dati si trovano sul disco "clone". I dati sono disponibili anche in caso della rottura contemporanea di più dischi, a patto che non si danneggi sia "l'originale" che il "clone".
+
+RAID 4 : Usato con 3 o più dischi. Un disco è dedicato alle informazioni di parità (consentendo il recupero dei dati in caso di fallimento di un disco). La necessità di mantenere aggiornate queste informazioni limita le prestazioni in scrittura. Gli altri dischi vengono usati in modalità RAID 0.
+RAID 5 : Le informazioni di parità vengono distribuite sui dischi, risolvendo in parte i problemi di prestazioni in scrittura del RAID 4.
+
+SATA : Serial ATA, nuovo tipo di interfaccia ATA Seriale. ha meno pin. Velocita: 1.5Gbit/s - 150Mbytes/s.
+SATA II: Serial ATA II generation. Velocità: 3Gbit/s - 300Mbytes/s.
+
+SOA : SOA (Services Oriented Architecture) is an approach to solution building. It is different in the way that solutions are structured and built; this difference is possible today given the convergence and adoption of industry standards, the maturity of SOA products, and the readiness of our clients to assume an application-centric versus process-centric view.
+SOAs are distributed, a consumer on a network must be able to invoke a service across the network. SOAs support dinamic binding and service discovery. Consumer can find the needed service in a registry and the service can be dinamically executed. A Orchestration module can manage a set of service for business module reuse.
+
+Socket 478 : Zoccolo x Pentium 4.
+
+Tune : Aggiornare.
+
+Ultra ATA: ATA, di tipo parallelo.
+Ultra ATA/100 : ATA/ATAPI-6, trasferimento di 100Mbyte/sec.
+Ultra ATA/133 : ATA/ATAPI-7 specification, un aggiornamento dell'architettura del bus parallelo bus architecture che consenteun trsaferimento di 133Mbytes/sec,
+
+Ultrashadow : tecnologia grafica che gestisce l'elaborazione grafica solo delle zone visibili della scena, evitando alla GPU calcoli comlessi per ombre e luci che non verrebbero cmq visualizzate.
+
+UltraViolet Lithografy : processo Litografico a raggi UltraVioletti che focalizza la luce attraverso delle lenti. Intel (Pentium) e AMD (Athlon) usano questo processo per scavare le linee dei circuiti del chip nel wafer di silicio. Attualmente si usano robot con lunghezza d'onda di 193 e 248 nanometri.
+
+UMTS : Universal Mobile Telecommunication System : Sistema di Telecomunicazione Mobile Universale con velocità max di 384 Kbit/s.
+
+Zrtp è un protocollo per negoziare una chiave crittografica fra due end point per una chiamata Voice over Internet Protocol (VoIP) che si basa su SRTP, Secure Real-time Transport Protocol.

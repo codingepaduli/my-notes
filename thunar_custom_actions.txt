@@ -1,0 +1,11 @@
+In Thunar (XFCE file manager) è possibile aggiungere delle azioni personalizzate al menu a comparsa:
+Aprire Thunar file manager
+Click Modifica
+Click Configurare Azioni personalizzate
+Aggiungere una nuova azione o modificare una esistente
+Inserire nome, descrizione, icona, comando e condizioni di visibilità
+
+Esempio comando: /usr/bin/wipe -fqsF %f
+
+BUG: La modifica al nome di un file (da shell o da altri processi) mentre thunar visualizza il file causa il blocco di thunar. Ad esempio il comando wipe senza l'opzione -F (non rinominare il file) blocca completamente thunar.
+
